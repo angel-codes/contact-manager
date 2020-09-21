@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Form from './components/Form';
+import ContactSection from './components/ContactSection';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       </div>
       <div className="container mx-auto mt-10">
         <Form />
+        <ContactSection />
       </div>
     </div>
   );
