@@ -5,7 +5,12 @@ import ContactContext from './ContactContext';
 import ContactReducer from './ContactReducer';
 
 // Constants
-import { CREATE_CONTACT, CREATE_ALERT, CLEAR_ALERT } from '../constants';
+import {
+  CREATE_CONTACT,
+  CREATE_ALERT,
+  CLEAR_ALERT,
+  REMOVE_CONTACT
+} from '../constants';
 
 const ContactState = props => {
   // Initial State
@@ -22,6 +27,13 @@ const ContactState = props => {
     dispatch({
       type: CREATE_CONTACT,
       payload: contact
+    });
+  };
+
+  const fnRemoveContact = id => {
+    dispatch({
+      type: REMOVE_CONTACT,
+      payload: id
     });
   };
 
@@ -51,6 +63,7 @@ const ContactState = props => {
 
         // Functions
         fnCreateContact,
+        fnRemoveContact,
         fnCreateAlert,
         fnClearAlert
       }}

@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+// Context
+import ContactContext from '../context/ContactContext';
+
 const Contact = ({ contact }) => {
+  // Access to the context
+  const contactContext = useContext(ContactContext);
+  const { fnRemoveContact } = contactContext;
+
   // Object Destructuring
-  const { name, company, cellphone } = contact;
+  const { id, name, company, cellphone } = contact;
+
+  const handleRemove = () => {
+    fnRemoveContact(id);
+  };
 
   return (
     <div className="border-l-4 border-gray-900 px-6 py-3 mb-4">
@@ -70,7 +81,10 @@ const Contact = ({ contact }) => {
               ></path>
             </svg>
           </button>
-          <button className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md rounded-l-none transition-colors ease-in-out duration-300">
+          <button
+            onClick={handleRemove}
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md rounded-l-none transition-colors ease-in-out duration-300"
+          >
             <svg
               className="w-6 h-6"
               fill="none"

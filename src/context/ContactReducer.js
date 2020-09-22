@@ -1,5 +1,10 @@
 // Constants
-import { CREATE_CONTACT, CREATE_ALERT, CLEAR_ALERT } from '../constants';
+import {
+  CREATE_CONTACT,
+  CREATE_ALERT,
+  CLEAR_ALERT,
+  REMOVE_CONTACT
+} from '../constants';
 
 export default (state, action) => {
   switch (action.type) {
@@ -11,6 +16,19 @@ export default (state, action) => {
       return {
         ...state,
         contacts: [...state.contacts, action.payload]
+      };
+    case REMOVE_CONTACT:
+      localStorage.setItem(
+        'contacts',
+        JSON.stringify(
+          state.contacts.filter(contact => contact.id !== action.payload)
+        )
+      );
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
+        )
       };
     case CREATE_ALERT:
       return {
