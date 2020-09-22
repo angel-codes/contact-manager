@@ -15,7 +15,7 @@ import {
 const ContactState = props => {
   // Initial State
   const initialState = {
-    contacts: [],
+    contacts: JSON.parse(localStorage.getItem('contacts')),
     contact: null,
     alert: null
   };

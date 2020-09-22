@@ -9,6 +9,10 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case CREATE_CONTACT:
+      localStorage.setItem(
+        'contacts',
+        JSON.stringify([...state.contacts, action.payload])
+      );
       return {
         ...state,
         contacts: [...state.contacts, action.payload]
