@@ -67,6 +67,7 @@ const Form = () => {
             </label>
             <input
               id="name"
+              value={contact.name}
               onChange={handleChange}
               className="appearance-none w-full block px-4 py-2 border-2 rounded-md shadow-md focus:outline-none focus:shadow-outline"
               name="name"
@@ -83,6 +84,7 @@ const Form = () => {
             </label>
             <input
               id="company"
+              value={contact.company}
               onChange={handleChange}
               className="appearance-none w-full block px-4 py-2 border-2 rounded-md shadow-md focus:outline-none focus:shadow-outline"
               name="company"
@@ -99,6 +101,7 @@ const Form = () => {
             </label>
             <input
               id="cellphone"
+              value={contact.cellphone}
               onChange={handleChange}
               className="appearance-none w-full block px-4 py-2 border-2 rounded-md shadow-md focus:outline-none focus:shadow-outline"
               name="cellphone"
