@@ -20,6 +20,19 @@ function App() {
           <Form />
           <ContactSection />
         </div>
+        <div className="absolute bottom-0 left-0 w-full text-center mb-4">
+          <p className="text-gray-500">
+            Made with ❤ by{' '}
+            <a
+              href="https://github.com/angel-codes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Angel Martinez
+            </a>{' '}
+          </p>
+        </div>
       </div>
     </ContactState>
   );
