@@ -2,8 +2,11 @@
 import {
   CREATE_CONTACT,
   CREATE_ALERT,
+  UPDATE_CONTACT,
   CLEAR_ALERT,
-  REMOVE_CONTACT
+  REMOVE_CONTACT,
+  SELECT_CONTACT,
+  CLEAR_SELECTED_CONTACT
 } from '../constants';
 
 export default (state, action) => {
@@ -16,6 +19,31 @@ export default (state, action) => {
       return {
         ...state,
         contacts: [...state.contacts, action.payload]
+      };
+    case UPDATE_CONTACT:
+      localStorage.setItem(
+        'contact',
+        JSON.stringify(
+          state.contacts.map(contact =>
+            contact.id === action.payload.id ? action.payload : contact
+          )
+        )
+      );
+      return {
+        ...state,
+        contacts: state.contacts.map(contact =>
+          contact.id === action.payload.id ? action.payload : contact
+        )
+      };
+    case SELECT_CONTACT:
+      return {
+        ...state,
+        selectcontact: action.payload
+      };
+    case CLEAR_SELECTED_CONTACT:
+      return {
+        ...state,
+        selectcontact: null
       };
     case REMOVE_CONTACT:
       localStorage.setItem(

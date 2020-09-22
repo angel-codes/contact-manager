@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import shortid from 'shortid';
 
 // Context
@@ -14,7 +14,27 @@ const Form = () => {
 
   // Access to the values of the context
   const contactContext = useContext(ContactContext);
-  const { fnCreateContact, fnCreateAlert, fnClearAlert } = contactContext;
+  const {
+    selectcontact,
+    fnCreateContact,
+    fnUpdateContact,
+    fnClearSelectedContact,
+    fnCreateAlert,
+    fnClearAlert
+  } = contactContext;
+
+  useEffect(() => {
+    // Check if the user is trying to update a contact
+    if (selectcontact !== null) {
+      setContact(selectcontact);
+    } else {
+      setContact({
+        name: '',
+        company: '',
+        cellphone: ''
+      });
+    }
+  }, [selectcontact]);
 
   // Save data of the inputs in local state
   const handleChange = e => {
@@ -43,8 +63,14 @@ const Form = () => {
       return; // stop execution of the code
     }
 
-    // Save in global state
-    fnCreateContact({ ...contact, id: shortid.generate() });
+    // Check if the user is trying to create or update
+    if (selectcontact !== null) {
+      fnUpdateContact(contact);
+      fnClearSelectedContact();
+    } else {
+      // Save in global state
+      fnCreateContact({ ...contact, id: shortid.generate() });
+    }
 
     // Restart the form
     setContact({

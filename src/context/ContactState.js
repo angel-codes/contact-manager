@@ -8,15 +8,18 @@ import ContactReducer from './ContactReducer';
 import {
   CREATE_CONTACT,
   CREATE_ALERT,
+  UPDATE_CONTACT,
   CLEAR_ALERT,
-  REMOVE_CONTACT
+  SELECT_CONTACT,
+  REMOVE_CONTACT,
+  CLEAR_SELECTED_CONTACT
 } from '../constants';
 
 const ContactState = props => {
   // Initial State
   const initialState = {
     contacts: JSON.parse(localStorage.getItem('contacts')),
-    contact: null,
+    selectcontact: null,
     alert: null
   };
 
@@ -27,6 +30,26 @@ const ContactState = props => {
     dispatch({
       type: CREATE_CONTACT,
       payload: contact
+    });
+  };
+
+  const fnUpdateContact = contact => {
+    dispatch({
+      type: UPDATE_CONTACT,
+      payload: contact
+    });
+  };
+
+  const fnSelectContact = contact => {
+    dispatch({
+      type: SELECT_CONTACT,
+      payload: contact
+    });
+  };
+
+  const fnClearSelectedContact = () => {
+    dispatch({
+      type: CLEAR_SELECTED_CONTACT
     });
   };
 
@@ -58,11 +81,14 @@ const ContactState = props => {
       value={{
         // State
         contacts: state.contacts,
-        contact: state.contact,
+        selectcontact: state.selectcontact,
         alert: state.alert,
 
         // Functions
         fnCreateContact,
+        fnUpdateContact,
+        fnSelectContact,
+        fnClearSelectedContact,
         fnRemoveContact,
         fnCreateAlert,
         fnClearAlert
