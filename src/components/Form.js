@@ -13,7 +13,7 @@ const Form = () => {
 
   // Access to the values of the context
   const contactContext = useContext(ContactContext);
-  const { fnCreateContact } = contactContext;
+  const { fnCreateContact, fnCreateAlert } = contactContext;
 
   // Save data of the inputs in local state
   const handleChange = e => {
@@ -35,7 +35,7 @@ const Form = () => {
       company.trim() === '' ||
       cellphone.trim() === ''
     ) {
-      // todo : send error to the global state
+      fnCreateAlert('All fields are required', 'error');
       return; // stop execution of the code
     }
 
