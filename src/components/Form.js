@@ -1,10 +1,59 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+
+// Context
+import ContactContext from '../context/ContactContext';
 
 const Form = () => {
+  // Local State
+  const [contact, setContact] = useState({
+    name: '',
+    company: '',
+    cellphone: ''
+  });
+
+  // Access to the values of the context
+  const contactContext = useContext(ContactContext);
+  const { fnCreateContact } = contactContext;
+
+  // Save data of the inputs in local state
+  const handleChange = e => {
+    setContact({
+      ...contact,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // When user submit the form
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const { name, company, cellphone } = contact;
+
+    // Validate form
+    if (
+      name.trim() === '' ||
+      company.trim() === '' ||
+      cellphone.trim() === ''
+    ) {
+      // todo : send error to the global state
+      return; // stop execution of the code
+    }
+
+    // Save in global state
+    fnCreateContact(contact);
+
+    // Restart the form
+    setContact({
+      name: '',
+      company: '',
+      cellphone: ''
+    });
+  };
+
   return (
     <div className="p-8 bg-white rounded-md">
       <h2 className="text-2xl text-center font-bold">Add a Contact</h2>
-      <form className="mt-5">
+      <form onSubmit={handleSubmit} className="mt-5">
         <div className="grid grid-cols-3 gap-6">
           <div>
             <label
@@ -14,6 +63,8 @@ const Form = () => {
               Name
             </label>
             <input
+              id="name"
+              onChange={handleChange}
               className="appearance-none w-full block px-4 py-2 border-2 rounded-md shadow-md focus:outline-none focus:shadow-outline"
               name="name"
               type="text"
@@ -28,6 +79,8 @@ const Form = () => {
               Company
             </label>
             <input
+              id="company"
+              onChange={handleChange}
               className="appearance-none w-full block px-4 py-2 border-2 rounded-md shadow-md focus:outline-none focus:shadow-outline"
               name="company"
               type="text"
@@ -36,14 +89,16 @@ const Form = () => {
           </div>
           <div>
             <label
-              htmlFor="name"
+              htmlFor="cellphone"
               className="font-bold text-base mb-1 inline-block"
             >
               Cell Phone
             </label>
             <input
+              id="cellphone"
+              onChange={handleChange}
               className="appearance-none w-full block px-4 py-2 border-2 rounded-md shadow-md focus:outline-none focus:shadow-outline"
-              name="name"
+              name="cellphone"
               type="tel"
               placeholder="Contact cell phone"
             />

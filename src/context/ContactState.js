@@ -18,12 +18,20 @@ const ContactState = props => {
   // Dispatch for actions
   const [state, dispatch] = useReducer(ContactReducer, initialState);
 
+  const fnCreateContact = contact => {
+    console.log(contact);
+  };
+
   return (
     <ContactContext.Provider
       value={{
+        // State
         contacts: state.contacts,
         contact: state.contact,
-        alert: state.alert
+        alert: state.alert,
+
+        // Functions
+        fnCreateContact
       }}
     >
       {props.children}
