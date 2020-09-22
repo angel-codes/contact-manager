@@ -5,7 +5,7 @@ import ContactContext from './ContactContext';
 import ContactReducer from './ContactReducer';
 
 // Constants
-import { GET_CONTACTS } from '../constants';
+import { GET_CONTACTS, CREATE_CONTACT } from '../constants';
 
 const ContactState = props => {
   // Initial State
@@ -19,7 +19,10 @@ const ContactState = props => {
   const [state, dispatch] = useReducer(ContactReducer, initialState);
 
   const fnCreateContact = contact => {
-    console.log(contact);
+    dispatch({
+      type: CREATE_CONTACT,
+      payload: contact
+    });
   };
 
   return (
