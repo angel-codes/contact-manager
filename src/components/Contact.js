@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Contact = () => {
+const Contact = ({ contact }) => {
+  // Object Destructuring
+  const { name, company, cellphone } = contact;
+
   return (
-    <div className="border-l-4 border-gray-900 px-6 py-3">
+    <div className="border-l-4 border-gray-900 px-6 py-3 mb-4">
       <div className="flex justify-between items-center">
         {/* Contact Info */}
         <div>
-          <p className="text-xl font-bold">Angel Martinez </p>
+          <p className="text-xl font-bold">{name}</p>
           <div className="mt-3 flex">
             <p className="flex items-center mr-4">
               <span className="mr-2">
@@ -25,7 +29,7 @@ const Contact = () => {
                   ></path>
                 </svg>
               </span>
-              T-Rex Code
+              {company}
             </p>
             <p className="flex items-center">
               <span className="mr-2">
@@ -44,7 +48,7 @@ const Contact = () => {
                   ></path>
                 </svg>
               </span>
-              788888884
+              {cellphone}
             </p>
           </div>
         </div>
@@ -86,6 +90,10 @@ const Contact = () => {
       </div>
     </div>
   );
+};
+
+Contact.propTypes = {
+  contact: PropTypes.object.isRequired
 };
 
 export default Contact;
