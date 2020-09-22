@@ -85,7 +85,7 @@ const Form = () => {
       <h2 className="text-2xl text-center font-bold">Add a Contact</h2>
       <form onSubmit={handleSubmit} className="mt-5">
         <div className="grid grid-cols-3 gap-6">
-          <div>
+          <div className="col-span-3 lg:col-span-1">
             <label
               htmlFor="name"
               className="font-bold text-base mb-1 inline-block"
@@ -102,7 +102,7 @@ const Form = () => {
               placeholder="Contact name"
             />
           </div>
-          <div>
+          <div className="col-span-3 lg:col-span-1">
             <label
               htmlFor="company"
               className="font-bold text-base mb-1 inline-block"
@@ -119,7 +119,7 @@ const Form = () => {
               placeholder="Contact company"
             />
           </div>
-          <div>
+          <div className="col-span-3 lg:col-span-1">
             <label
               htmlFor="cellphone"
               className="font-bold text-base mb-1 inline-block"
@@ -140,7 +140,7 @@ const Form = () => {
         <div className="w-full mt-5 flex justify-end">
           <button
             type="submit"
-            className="px-6 py-3 bg-gray-900 hover:bg-gray-800 transition-colors ease-in-out duration-300 rounded-md shadow-md text-white font-bold"
+            className="w-full block lg:w-auto lg:inline-block px-6 py-3 bg-gray-900 hover:bg-gray-800 transition-colors ease-in-out duration-300 rounded-md shadow-md text-white font-bold"
           >
             Create Contact
           </button>

@@ -26,7 +26,7 @@ const Contact = ({ contact }) => {
         {/* Contact Info */}
         <div>
           <p className="text-xl font-bold">{name}</p>
-          <div className="mt-3 flex">
+          <div className="mt-3 flex flex-wrap lg:flex-no-wrap">
             <p className="flex items-center mr-4">
               <span className="mr-2">
                 <svg
@@ -71,7 +71,7 @@ const Contact = ({ contact }) => {
         <div>
           <button
             onClick={handleSelect}
-            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md rounded-r-none transition-colors ease-in-out duration-300"
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md rounded-b-none lg:rounded-r-none transition-colors ease-in-out duration-300"
           >
             <svg
               className="w-6 h-6"
@@ -90,7 +90,7 @@ const Contact = ({ contact }) => {
           </button>
           <button
             onClick={handleRemove}
-            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md rounded-l-none transition-colors ease-in-out duration-300"
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md rounded-t-none lg:rounded-l-none transition-colors ease-in-out duration-300"
           >
             <svg
               className="w-6 h-6"

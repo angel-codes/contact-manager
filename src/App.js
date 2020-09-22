@@ -16,7 +16,7 @@ function App() {
         <div className="w-full py-3 bg-gray-800 text-center">
           <h1 className="text-3xl text-white font-bold">Contact Manager</h1>
         </div>
-        <div className="container mx-auto mt-10">
+        <div className="container mx-auto mt-10 px-2">
           <Form />
           <ContactSection />
         </div>
