@@ -13,7 +13,7 @@ const Form = () => {
 
   // Access to the values of the context
   const contactContext = useContext(ContactContext);
-  const { fnCreateContact, fnCreateAlert } = contactContext;
+  const { fnCreateContact, fnCreateAlert, fnClearAlert } = contactContext;
 
   // Save data of the inputs in local state
   const handleChange = e => {
@@ -36,6 +36,9 @@ const Form = () => {
       cellphone.trim() === ''
     ) {
       fnCreateAlert('All fields are required', 'error');
+      setTimeout(() => {
+        fnClearAlert();
+      }, 2000);
       return; // stop execution of the code
     }
 

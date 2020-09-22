@@ -5,7 +5,12 @@ import ContactContext from './ContactContext';
 import ContactReducer from './ContactReducer';
 
 // Constants
-import { GET_CONTACTS, CREATE_CONTACT, CREATE_ALERT } from '../constants';
+import {
+  GET_CONTACTS,
+  CREATE_CONTACT,
+  CREATE_ALERT,
+  CLEAR_ALERT
+} from '../constants';
 
 const ContactState = props => {
   // Initial State
@@ -35,6 +40,12 @@ const ContactState = props => {
     });
   };
 
+  const fnClearAlert = () => {
+    dispatch({
+      type: CLEAR_ALERT
+    });
+  };
+
   return (
     <ContactContext.Provider
       value={{
@@ -45,7 +56,8 @@ const ContactState = props => {
 
         // Functions
         fnCreateContact,
-        fnCreateAlert
+        fnCreateAlert,
+        fnClearAlert
       }}
     >
       {props.children}

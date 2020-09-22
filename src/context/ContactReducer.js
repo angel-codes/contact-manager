@@ -1,5 +1,10 @@
 // Constants
-import { GET_CONTACTS, CREATE_CONTACT, CREATE_ALERT } from '../constants';
+import {
+  GET_CONTACTS,
+  CREATE_CONTACT,
+  CREATE_ALERT,
+  CLEAR_ALERT
+} from '../constants';
 
 export default (state, action) => {
   switch (action.type) {
@@ -15,6 +20,11 @@ export default (state, action) => {
           message: action.payload.message,
           category: action.payload.category
         }
+      };
+    case CLEAR_ALERT:
+      return {
+        ...state,
+        alert: null
       };
     default:
       return state;
