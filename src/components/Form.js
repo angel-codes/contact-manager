@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import shortid from 'shortid';
 
 // Context
 import ContactContext from '../context/ContactContext';
@@ -43,7 +44,7 @@ const Form = () => {
     }
 
     // Save in global state
-    fnCreateContact(contact);
+    fnCreateContact({ ...contact, id: shortid.generate() });
 
     // Restart the form
     setContact({

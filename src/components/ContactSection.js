@@ -20,7 +20,7 @@ const ContactSection = () => {
             <p className="text-center text-gray-600">No contacts yet</p>
           ) : null}
           {contacts.map(contact => (
-            <Contact contact={contact} />
+            <Contact key={contact.id} contact={contact} />
           ))}
         </div>
       </div>
