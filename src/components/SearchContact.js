@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SearchContact = () => {
+const SearchContact = ({ word, setWord }) => {
+  const handleChange = e => {
+    setWord(e.target.value);
+  };
+
   return (
     <div className="w-full relative">
       <input
+        value={word}
+        onChange={handleChange}
         className="text-lg w-full block border-2 shadow-md pl-12 pr-5 py-3 rounded-md appearance-none focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="Search contact"
@@ -26,6 +33,10 @@ const SearchContact = () => {
       </div>
     </div>
   );
+};
+
+SearchContact.propTypes = {
+  setWord: PropTypes.func.isRequired
 };
 
 export default SearchContact;
