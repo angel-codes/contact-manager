@@ -5,12 +5,7 @@ import ContactContext from './ContactContext';
 import ContactReducer from './ContactReducer';
 
 // Constants
-import {
-  GET_CONTACTS,
-  CREATE_CONTACT,
-  CREATE_ALERT,
-  CLEAR_ALERT
-} from '../constants';
+import { CREATE_CONTACT, CREATE_ALERT, CLEAR_ALERT } from '../constants';
 
 const ContactState = props => {
   // Initial State

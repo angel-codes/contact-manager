@@ -1,10 +1,5 @@
 // Constants
-import {
-  GET_CONTACTS,
-  CREATE_CONTACT,
-  CREATE_ALERT,
-  CLEAR_ALERT
-} from '../constants';
+import { CREATE_CONTACT, CREATE_ALERT, CLEAR_ALERT } from '../constants';
 
 export default (state, action) => {
   switch (action.type) {

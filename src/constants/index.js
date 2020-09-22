@@ -1,7 +1,6 @@
 /**
  * Contact
  */
-export const GET_CONTACTS = 'GET_CONTACTS';
 export const CREATE_CONTACT = 'CREATE_CONTACT';
 
 /**
